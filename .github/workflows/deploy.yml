@@ -1,0 +1,31 @@
+name: AutoDeployX CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+job:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with: 
+        node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: echo "No tests yet"
+
+      - name: Build Docker Image
+        run: docker build -t autodeployx .
+
+      - name: Deploy Info
+        run: echo "Pipeline successful - ready for deployment"      
