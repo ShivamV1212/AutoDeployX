@@ -5,7 +5,7 @@ on:
     branches:
       - main
 
-job:
+jobs:                      
   build:
     runs-on: ubuntu-latest
 
@@ -15,8 +15,8 @@ job:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
-        with: 
-        node-version: '18'
+        with:
+          node-version: '18'
 
       - name: Install Dependencies
         run: npm install
@@ -28,4 +28,4 @@ job:
         run: docker build -t autodeployx .
 
       - name: Deploy Info
-        run: echo "Pipeline successful - ready for deployment"      
+        run: echo "Pipeline successful — ready for deployment"
