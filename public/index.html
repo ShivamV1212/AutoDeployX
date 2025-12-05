@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoDeployX</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 AutoDeployX</h1>
+    <p class="subtitle">Automated CI/CD Deployment Demo</p>
+
+    <button onclick="checkStatus()">Check API Status</button>
+
+    <p id="output" class="output">
+      Click the button to check if the deployment is working.
+    </p>
+
+    <p class="footer">Deployed with Docker · GitHub Actions · Render</p>
+  </div>
+
+  <script>
+    async function checkStatus() {
+      try {
+        const res = await fetch("/api/status");
+        const text = await res.text();
+        document.getElementById("output").innerText = text;
+      } catch (err) {
+        document.getElementById("output").innerText =
+          "Error contacting server.";
+      }
+    }
+  </script>
+</body>
+</html>
